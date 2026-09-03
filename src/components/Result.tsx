@@ -248,8 +248,7 @@ export default function Result({ onNavigate }: ResultProps) {
 
         setTimeout(() => {
             setCurrentPhase(3);
-            ga4Tracking.phaseProgressionClicked({ phase_from: 2, phase_to: 3, button_name: 'Revelar VENTANA DE 72 HORAS' });
-            ga4Tracking.revelationViewed('Ventana 72 Horas', 2);
+            ga4Tracking.window72hRevealed({ phase_from: 2, phase_to: 3, button_name: 'Revelar VENTANA DE 72 HORAS' });
             setFadeOutPhase(null);
         }, 400);
     };
@@ -261,8 +260,7 @@ export default function Result({ onNavigate }: ResultProps) {
 
         setTimeout(() => {
             setCurrentPhase(4);
-            ga4Tracking.phaseProgressionClicked({ phase_from: 3, phase_to: 4, button_name: 'Revelar Mi Plan Personalizado' });
-            ga4Tracking.revelationViewed('Oferta Revelada', 3);
+            ga4Tracking.offerRevealedStep({ phase_from: 3, phase_to: 4, button_name: 'Revelar Mi Plan Personalizado' });
             ga4Tracking.offerRevealed();
             setFadeOutPhase(null);
         }, 400);
@@ -274,6 +272,7 @@ export default function Result({ onNavigate }: ResultProps) {
             alert('Por favor, elige un plan primero');
             return;
         }
+        ga4Tracking.buyClickStep({ phase_from: 4, phase_to: 4, button_name: 'Comprar Ahora' });
         ga4Tracking.ctaBuyClicked('result_buy_main');
         window.open(getHotmartUrl(selectedPlan), '_blank');
     };
