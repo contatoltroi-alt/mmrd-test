@@ -202,6 +202,42 @@ class GA4Tracking {
   }
 
   /**
+   * Transição vídeo → janela de 72 horas (fase 2 → 3).
+   */
+  window72hRevealed(params: { phase_from: number; phase_to: number; button_name: string }) {
+    this.sendEvent('window_72h_revealed', {
+      phase_from: params.phase_from,
+      phase_to: params.phase_to,
+      button_name: params.button_name,
+      page: 'resultado'
+    });
+  }
+
+  /**
+   * Transição janela → página de oferta (fase 3 → 4).
+   */
+  offerRevealedStep(params: { phase_from: number; phase_to: number; button_name: string }) {
+    this.sendEvent('offer_revealed_step', {
+      phase_from: params.phase_from,
+      phase_to: params.phase_to,
+      button_name: params.button_name,
+      page: 'resultado'
+    });
+  }
+
+  /**
+   * Clique no botão de compra.
+   */
+  buyClickStep(params: { phase_from: number; phase_to: number; button_name: string }) {
+    this.sendEvent('buy_click_step', {
+      phase_from: params.phase_from,
+      phase_to: params.phase_to,
+      button_name: params.button_name,
+      page: 'resultado'
+    });
+  }
+
+  /**
    * Registra o clique no botão "Desbloquear Vídeo".
    */
   videoButtonUnlocked(params: { unlock_time_seconds: number; video_name: string }) {
